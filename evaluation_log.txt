@@ -1,0 +1,75 @@
+============================================================
+SIH AI/ML ADAPTIVE NOISE CANCELLATION
+MODEL EVALUATION
+============================================================
+Device: cpu
+Loaded checkpoint: /home/nasreen/sih/checkpoints/best.pt
+
+
+============================================================
+NOISE CATEGORY: STATIONARY
+============================================================
+Evaluating 20 samples...
+
+Results:
+Input SNR       : 2.284 dB
+Output SNR      : 8.118 dB
+SNR improvement : 5.833 dB
+Input STOI      : 0.7904
+Output STOI     : 0.8130
+Input PESQ      : 1.2466
+Output PESQ     : 1.4528
+
+
+============================================================
+NOISE CATEGORY: NON_STATIONARY
+============================================================
+Evaluating 20 samples...
+
+Results:
+Input SNR       : 2.750 dB
+Output SNR      : 13.353 dB
+SNR improvement : 10.603 dB
+Input STOI      : 0.8635
+Output STOI     : 0.8735
+Input PESQ      : 1.8526
+Output PESQ     : 2.0538
+
+
+============================================================
+NOISE CATEGORY: IMPULSIVE
+============================================================
+Evaluating 20 samples...
+
+Results:
+Input SNR       : 6.402 dB
+Output SNR      : 11.567 dB
+SNR improvement : 5.164 dB
+Input STOI      : 0.8711
+Output STOI     : 0.9085
+Input PESQ      : 1.5496
+Output PESQ     : 1.9559
+
+
+============================================================
+EVALUATION COMPLETE
+============================================================
+
+STATIONARY
+  SNR : 2.28 → 8.12 dB
+  STOI: 0.790 → 0.813
+  PESQ: 1.247 → 1.453
+
+NON_STATIONARY
+  SNR : 2.75 → 13.35 dB
+  STOI: 0.863 → 0.874
+  PESQ: 1.853 → 2.054
+
+IMPULSIVE
+  SNR : 6.40 → 11.57 dB
+  STOI: 0.871 → 0.908
+  PESQ: 1.550 → 1.956
+
+Saved results to:
+/home/nasreen/sih/evaluation_results.json
+============================================================

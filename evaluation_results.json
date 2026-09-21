@@ -1,0 +1,32 @@
+[
+  {
+    "noise_type": "stationary",
+    "input_snr": 2.284303903579712,
+    "output_snr": 7.793558597564697,
+    "snr_improvement": 5.509254455566406,
+    "input_stoi": 0.7903851193203365,
+    "output_stoi": 0.8095398074743345,
+    "input_pesq": 1.246552175283432,
+    "output_pesq": 1.4790621399879456
+  },
+  {
+    "noise_type": "non_stationary",
+    "input_snr": 2.7500765323638916,
+    "output_snr": 13.46183967590332,
+    "snr_improvement": 10.711763381958008,
+    "input_stoi": 0.8634857366807906,
+    "output_stoi": 0.8723396632087173,
+    "input_pesq": 1.8525714337825776,
+    "output_pesq": 2.0460528910160063
+  },
+  {
+    "noise_type": "impulsive",
+    "input_snr": 6.402461051940918,
+    "output_snr": 11.674118041992188,
+    "snr_improvement": 5.2716569900512695,
+    "input_stoi": 0.8711261605638576,
+    "output_stoi": 0.9109089026305732,
+    "input_pesq": 1.54955096244812,
+    "output_pesq": 2.0000828444957732
+  }
+]
