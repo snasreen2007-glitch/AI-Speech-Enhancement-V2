@@ -316,32 +316,35 @@ Potential hardware implementation blocks include:
 
 ## 16. Repository Structure
 
-AI-Speech-Enhancement-V2/
-│
-├── model_V2.py
-├── losses_V2.py
-├── train_V2.py
-├── train_V2_AUG.py
-├── evaluate_V2_FINAL.py
-│
-├── realtime_server.py
-│
-├── checkpoints/
-│   ├── FINAL_MODEL_V2.pt
-│   └── FINAL_MODEL_V2_BEFORE_UPGRADE.pt
-│
-├── screenshots/
-│   ├── 01_snr_v1_vs_v2.png
-│   ├── 02_stoi_v1_vs_v2.png
-│   ├── 03_pesq_v1_vs_v2.png
-│   ├── 04_v2_improvement_summary.png
-│   ├── 05_v2_architecture.png
-│   ├── 06_v2_training_progress.png
-│   ├── 07_v2_model_test.png
-│   └── 08_v2_realtime_benchmark.png
-│
-├── V2_RESULTS.md
-└── README.md
+### Core V2 Files
+
+- **model_V2.py** — V2 phase-aware speech enhancement model
+- **losses_V2.py** — V2 training loss functions
+- **train_V2.py** — Main V2 training script
+- **train_V2_AUG.py** — Augmented V2 training pipeline
+- **evaluate_V2_FINAL.py** — Final V2 evaluation script
+- **realtime_server.py** — V2 processing server
+
+### Model Checkpoints
+
+- **checkpoints/FINAL_MODEL_V2.pt** — Final V2 model
+- **checkpoints/FINAL_MODEL_V2_BEFORE_UPGRADE.pt** — Backup of the previous V2 model
+
+### Evaluation and Documentation
+
+- **V2_RESULTS.md** — V2 evaluation results
+- **README.md** — Project documentation
+
+### Screenshots
+
+- **screenshots/01_snr_v1_vs_v2.png** — SNR comparison
+- **screenshots/02_stoi_v1_vs_v2.png** — STOI comparison
+- **screenshots/03_pesq_v1_vs_v2.png** — PESQ comparison
+- **screenshots/04_v2_improvement_summary.png** — Overall improvement summary
+- **screenshots/05_v2_architecture.png** — V2 architecture
+- **screenshots/06_v2_training_progress.png** — Training progress
+- **screenshots/07_v2_model_test.png** — Model validation
+- **screenshots/08_v2_realtime_benchmark.png** — Real-time processing benchmark
 
 ---
 
@@ -353,7 +356,7 @@ The current implementation is a research prototype and has several areas that re
 2. PESQ is currently below the target value of 2.5.
 3. The real-time benchmark has limited latency margin.
 4. The current live microphone setup does not provide a clean reference signal, so objective SNR/STOI/PESQ measurements require paired noisy-clean evaluation data.
-6. FPGA/SoC deployment and hardware acceleration are future integration stages.
+5. FPGA/SoC deployment and hardware acceleration are future integration stages.
 
 These limitations are documented so that the current results are not overstated.
 
