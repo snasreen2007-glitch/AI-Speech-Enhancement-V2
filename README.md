@@ -48,27 +48,15 @@ The goal of this project is to balance:
 
 The V2 model forms the AI speech-enhancement stage of the broader system:
 
-```text
-Microphone
-    |
-    v
-Noisy Speech
-    |
-    v
-STFT / Spectral Representation
-    |
-    v
-AI Speech Enhancement V2
-    |
-    +---- Magnitude Mask
-    +---- Real Spectral Correction
-    +---- Imaginary Spectral Correction
-    +---- VAD
-    |
-    v
-Enhanced Speech
-    |
-    v
+**Microphone → Noisy Speech → STFT / Spectral Representation → AI Speech Enhancement V2 → Enhanced Speech**
+
+The V2 model produces four outputs:
+
+- **Magnitude Mask**
+- **Real Spectral Correction**
+- **Imaginary Spectral Correction**
+- **Voice Activity Detection (VAD)**
+
 ---
 
 ## 3. Key Features
@@ -99,7 +87,6 @@ The V2 network is a lightweight phase-aware spectral enhancement model.
 
 ### Processing Pipeline
 
-```text
 Noisy Waveform
       |
       v
@@ -155,20 +142,10 @@ A conventional spectral-mask model mainly modifies the magnitude of the noisy sp
 
 V2 additionally predicts **real and imaginary spectral corrections**.
 
-```text
-Noisy Complex Spectrum
-          |
-          +---- Magnitude information
-          |
-          +---- Real component correction
-          |
-          +---- Imaginary component correction
-          |
-          v
-Corrected Complex Spectrum
-          |
-          v
-Enhanced Speech
+**Noisy Complex Spectrum → Magnitude Information + Real Component Correction + Imaginary Component Correction → Corrected Complex Spectrum → Enhanced Speech**
+
+Unlike a magnitude-only enhancement model, V2 also learns real and imaginary spectral corrections to improve the reconstructed speech signal.
+
 ---
 
 ## 6. Dataset and Noise Conditions
@@ -231,8 +208,6 @@ The V2 objective combines:
 ## 9. Model Validation
 
 The complete model forward path was tested using a 32,000-sample waveform.
-
-```text
 Input shape       : [1, 1, 32000]
 Enhanced shape    : [1, 1, 32000]
 VAD output shape  : [1, 1, 32000]
@@ -240,7 +215,6 @@ Trainable params  : 438,453
 
 V2 MODEL TEST PASSED
 
-```
 
 ![Model Test](screenshots/07_v2_model_test.png)
 
@@ -342,7 +316,6 @@ Potential hardware implementation blocks include:
 
 ## 16. Repository Structure
 
-```text
 AI-Speech-Enhancement-V2/
 │
 ├── model_V2.py
@@ -369,7 +342,6 @@ AI-Speech-Enhancement-V2/
 │
 ├── V2_RESULTS.md
 └── README.md
-```
 
 ---
 
