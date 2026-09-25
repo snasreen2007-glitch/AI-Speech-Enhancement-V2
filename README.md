@@ -29,7 +29,6 @@ It operates on the Short-Time Fourier Transform (STFT) representation of the noi
 - Imaginary-valued spectral correction
 - Voice-activity estimate (VAD)
 
-> **Scope:** This repository focuses on the AI speech-enhancement component. It is intended to act as an AI front-end within the larger adaptive ANC system. It is not, by itself, a complete physical FxLMS ANC headset implementation.
 
 ---
 
@@ -70,7 +69,6 @@ AI Speech Enhancement V2
 Enhanced Speech
     |
     v
-Adaptive ANC / Communication Pipeline
 ---
 
 ## 3. Key Features
@@ -316,92 +314,6 @@ The benchmark shows that the current model can process a 250 ms chunk in approxi
 
 ---
 
-## 13. Adaptive ANC Integration
-
-The speech enhancement model is designed to work as the AI component of the overall adaptive noise-cancellation system.
-
-The planned processing chain is:
-
-```text
-Primary Microphone
-        |
-        v
-   Audio Input
-        |
-        v
-   AI Speech / Noise Analysis
-        |
-        +----------------------+
-        |                      |
-        v                      v
-Speech Enhancement       Noise Condition
-        |                      |
-        |                      v
-        |                AI Controller
-        |                      |
-        |              +-------+-------+
-        |              |               |
-        |              v               v
-        |          Filter Length       Step Size
-        |              |               |
-        +--------------+---------------+
-                       |
-                       v
-                  FxLMS / NLMS
-                       |
-                       v
-                 Anti-Noise Signal
-                       |
-                       v
-                    DAC
-                       |
-                       v
-                  Headphone
-                       ^
-                       |
-                Error Microphone
-```
-
-The AI component can provide noise-aware control information to the adaptive filter, while the NLMS/FxLMS algorithm performs adaptive filtering.
-
----
-
-## 14. AI-Controlled FxLMS
-
-An AI-controlled FxLMS controller was also developed as part of the adaptive ANC research.
-
-The controller uses acoustic features to estimate suitable adaptive-filter parameters such as:
-
-- Adaptive filter length
-- Step size (μ)
-- Noise-dependent control parameters
-
-The development pipeline is:
-
-```text
-Audio Features
-      |
-      v
-AI Controller
-      |
-      +---- Filter Length
-      |
-      +---- Step Size μ
-      |
-      v
-FxLMS Adaptive Filter
-      |
-      v
-Anti-Noise Generation
-      |
-      v
-Residual Noise Reduction
-```
-
-The AI controller is treated as a control layer around the adaptive filtering algorithm rather than replacing the adaptive filter itself.
-
----
-
 ## 15. Software and Tools
 
 ### Programming and AI
@@ -423,7 +335,6 @@ Potential hardware implementation blocks include:
 
 - FIR filtering
 - FFT/STFT processing
-- Adaptive filtering
 - AI inference
 - System control
 
@@ -470,7 +381,6 @@ The current implementation is a research prototype and has several areas that re
 2. PESQ is currently below the target value of 2.5.
 3. The real-time benchmark has limited latency margin.
 4. The current live microphone setup does not provide a clean reference signal, so objective SNR/STOI/PESQ measurements require paired noisy-clean evaluation data.
-5. Physical FxLMS ANC requires a properly characterized secondary acoustic path.
 6. FPGA/SoC deployment and hardware acceleration are future integration stages.
 
 These limitations are documented so that the current results are not overstated.
@@ -488,7 +398,6 @@ Planned improvements include:
 - Clipping and microphone distortion augmentation
 - Improved stationary-noise suppression
 - Improved impulsive-noise handling
-- AI-controlled FxLMS optimization
 - Primary/reference microphone integration
 - Secondary-path identification
 - Model quantization
@@ -514,17 +423,12 @@ Planned improvements include:
 - [x] STOI evaluation
 - [x] PESQ evaluation
 - [x] Real-time processing benchmark
-- [x] NLMS implementation
-- [x] FxLMS implementation
-- [x] AI-controlled FxLMS prototype
 - [x] GitHub documentation
 
 ### In Progress
 
 - [ ] Further V2 performance optimization
 - [ ] Improved perceptual quality
-- [ ] Reference-microphone ANC validation
-- [ ] Secondary-path modeling
 - [ ] FPGA/SoC deployment
 
 ---
@@ -541,9 +445,6 @@ Planned improvements include:
 | SNR Improvement | Demonstrated |
 | STOI Improvement | Demonstrated |
 | PESQ Improvement | Demonstrated |
-| NLMS | Implemented |
-| FxLMS | Implemented |
-| AI-Controlled FxLMS | Prototype implemented |
 | Real-Time Benchmark | Completed |
 | FPGA Deployment | Future stage |
 
@@ -555,14 +456,20 @@ AI Speech Enhancement V2 provides a lightweight phase-aware neural speech-enhanc
 
 The model combines spectral magnitude estimation with real and imaginary spectral corrections, allowing both magnitude and phase information to be refined during enhancement.
 
-The project also integrates adaptive filtering research through NLMS, FxLMS, and an AI-controlled FxLMS controller. This creates a foundation for a hybrid AI-assisted adaptive noise-cancellation architecture.
+Experimental evaluation shows measurable improvements in **SNR, STOI, and PESQ** compared with the previous V1 model.
 
-Current experimental results demonstrate measurable improvements in SNR, STOI, and PESQ compared with the previous V1 model. Further optimization is required to reach the final project targets and validate the complete system on reference-microphone hardware and FPGA/SoC platforms.
-
----
+The current V2 implementation provides a strong foundation for further improvement in speech quality, noise suppression, computational efficiency, and real-time processing.
 
 ## 22. Acknowledgement
 
-Developed as part of the **Smart India Hackathon 2026** project on AI/ML-based speech-protected adaptive noise cancellation for defence communication.
+This project was developed as part of **Smart India Hackathon 2026**.
 
-The implementation focuses on the AI/ML speech-enhancement and adaptive-filtering components of the proposed system.
+We would like to thank our faculty members, mentors, and teammates for their guidance, support, and encouragement during the development and testing of the AI Speech Enhancement V2 system.
+
+---
+
+## 23. License
+
+This project is intended for educational, research, and academic purposes.
+
+Please refer to the repository and project documentation for details about the included source code, model, results, and supporting materials.
